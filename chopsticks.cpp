@@ -8,32 +8,75 @@ using namespace std; //basic stuff
 
 #define MAX_DEPTH 15
 
-vector<int> position_5(int pos) {
-    vector<int> out;
-    for (int i = 0; i < 4; i++) {
-        out.push_back((pos / (pow(10, i))) % 10);
+vector<char> chr_positions(string pos) {
+    vector<char> out;
+    for (char c : pos) {
+        out.push_back(c);
     }
     return out;
 }
 
-vector<int> possible_moves(int pos, int turn) { //turns: 0 - ai, 1 - player
-    vector<int> out;
+vector<string> possible_moves(string pos, int turn) { //turns: 0 - ai, 1 - player
+    vector<string> out;
 
     if (turn == 0) {
         out.push_back()
     }
 }
 
-int analyse_position(int pos, int turn, int depth) { //turns: 0 - ai, 1 - player
-    if (depth > MAX_DEPTH) {return 0;}
+int hand_advantage(string pos, bool return_sum) { //returns `ai_lost_hands * 10 + player_lost_hands`
+    int out = 0;
 
-    vector<int> all_digits = position_5(pos);
+    if (pos[0] == '-') {
+        out++;
+    }
+    if (pos[1] == '-') {
+        out++;
+    }
+    if (pos[2] == '-') {
+        out+=10;
+    }
+    if (pos[3] == '-') {
+        out+=10;
+    }
+
+    if (return_sum) {
+        return out + (out % 10);
+    } else {
+        return out;
+    }
+}
+
+int analyse_position(string pos, int turn, int depth) { //turns: 0 - ai, 1 - player
+    if (depth > MAX_DEPTH) {return hand_advantage(pos, true);}
+
+    vector<char> all_digits = chr_positions(pos);
 
     if (all_digits[0] > 4 || all_digits[1] > 4) {
         return -999;
     } else if (all_digits[2] > 4 || all_digits[3] > 4) {
         return 999;
     }
+
+    if (isdigit(all_digits[0])) {
+        if ((all_digits[0] - '0') > 4) {
+            pos[0] = '-';
+        }
+    } else if (isdigit(all_digits[1])) {
+        if ((all_digits[1] - '0') > 4) {
+            pos[1] = '-';
+        }
+    } else if (isdigit(all_digits[2])) {
+        if ((all_digits[2] - '0') > 4) {
+            pos[2] = '-';
+        }
+    } else if (isdigit(all_digits[3])) {
+        if ((all_digits[3] - '0') > 4) {
+            pos[3] = '-';
+        }
+    }
+
+    int hnd_advs = hand_advantage(pos, false);
 
     int best;
     if (turn == 1) {
