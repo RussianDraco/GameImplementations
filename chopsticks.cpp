@@ -154,8 +154,11 @@ int analyse_position(string pos, int turn, int depth) { //turns: 0 - ai, 1 - pla
 
 int main() { //main function
     cout << "Starting chop-sticks game...";
+    cout << "\n";
     cout << "You go first...";
+    cout << "\n";
     cout << "1111";
+    cout << "\n";
 
     string turn; //players turn will be the two values of your hands
     cin >> turn;
