@@ -8,6 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
+      "cwd": "c:/Users/mathn/Desktop/Programming/Other/Cpp/GameImplementations",
+      "program": "c:/Users/mathn/Desktop/Programming/Other/Cpp/GameImplementations/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

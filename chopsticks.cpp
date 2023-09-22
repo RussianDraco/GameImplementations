@@ -105,6 +105,8 @@ int analyse_position(string pos, int turn, int depth) { //turns: 0 - ai, 1 - pla
 
     vector<char> all_digits = chr_positions(pos);
 
+    cout << "chr_positions" << "\n"; string x; cin >> x;
+
     if (all_digits[0] > 4 || all_digits[1] > 4) {
         return -99;
     } else if (all_digits[2] > 4 || all_digits[3] > 4) {
