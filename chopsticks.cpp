@@ -167,3 +167,5 @@ int main() { //main function
 
     cout << analyse_position(turn, 0, 1);
 }
+
+//runtime error?
