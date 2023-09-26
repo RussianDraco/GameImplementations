@@ -6,7 +6,7 @@
 
 using namespace std; //basic stuff
 
-#define MAX_DEPTH 15
+#define MAX_DEPTH 50
 
 vector<char> chr_positions(string pos) {
     vector<char> out;
@@ -132,6 +132,7 @@ int analyse_position(string pos, int turn, int depth) { //turns: 0 - ai, 1 - pla
     }
 
     int hnd_advs = hand_advantage(pos, false);
+    cout << hnd_advs;
     if (hnd_advs % 10 == 2) {
         return -99;
     } else if (hnd_advs / 10 >= 2) {
