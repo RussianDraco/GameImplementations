@@ -6,7 +6,7 @@
 
 using namespace std; //basic stuff
 
-#define MAX_DEPTH 50
+#define MAX_DEPTH 15
 
 vector<char> chr_positions(string pos) {
     vector<char> out;
@@ -105,13 +105,11 @@ int analyse_position(string pos, int turn, int depth) { //turns: 0 - ai, 1 - pla
 
     vector<char> all_digits = chr_positions(pos);
 
-    cout << "chr_positions" << "\n"; string x; cin >> x;
-
-    if (all_digits[0] > 4 || all_digits[1] > 4) {
+    /*if (all_digits[0] > 4 || all_digits[1] > 4) {
         return -99;
     } else if (all_digits[2] > 4 || all_digits[3] > 4) {
         return 99;
-    }
+    }**/
 
     if (isdigit(all_digits[0])) {
         if ((all_digits[0] - '0') > 4) {
@@ -132,7 +130,7 @@ int analyse_position(string pos, int turn, int depth) { //turns: 0 - ai, 1 - pla
     }
 
     int hnd_advs = hand_advantage(pos, false);
-    cout << hnd_advs;
+    //cout << hnd_advs;
     if (hnd_advs % 10 == 2) {
         return -99;
     } else if (hnd_advs / 10 >= 2) {
@@ -167,6 +165,7 @@ int main() { //main function
     cin >> turn;
 
     cout << analyse_position(turn, 0, 1);
+    cout << "--Analysis Printed--";
 }
 
 //runtime error?
