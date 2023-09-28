@@ -150,6 +150,8 @@ int analyse_position(string pos, int turn, int depth) { //turns: 0 - ai, 1 - pla
         }
     }
 
+    cout << best << '\n';
+
     return best; //add function to respond with the best move too
 }
 
